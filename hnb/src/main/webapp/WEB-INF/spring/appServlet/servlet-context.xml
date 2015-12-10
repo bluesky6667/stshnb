@@ -33,7 +33,7 @@
 	<!-- JSON 타입을 사용할 수 있도록 @ResponseBody 사용가능하게 함 -->
 	<beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
 
-
+	<!-- SOAP 방식 리턴값 결정인데, 타일즈를 사용하면 제거해야함 -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
