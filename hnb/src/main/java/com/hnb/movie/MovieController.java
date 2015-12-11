@@ -79,6 +79,7 @@ public class MovieController {
 	public Model movieChart(Model model){
 		logger.info("MovieController-movieChart() 진입");
 		List<MovieVO> list =service.getList();
+		logger.info("서비스 리턴값 : {}", list);
 		model.addAttribute("movieList2", list);
 		return model;
 	}
