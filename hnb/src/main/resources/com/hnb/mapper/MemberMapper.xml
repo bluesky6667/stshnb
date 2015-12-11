@@ -3,11 +3,59 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
  <mapper namespace="com.hnb.mapper.MemberMapper">
-     <select id="getOne" resultType="com.hnb.member.MemberVO">
-             SELECT * FROM user WHERE name = #{name}  
+     <select id="selectAll" resultType="com.hnb.member.MemberVO">
+     	SELECT
+     	ID AS id,
+     	PASSWORD AS password,
+     	NAME AS name,
+     	BIRTH AS birth,
+     	ADDR AS addr,
+     	GENDER AS gender,
+     	EMAIL AS email,
+     	PHONE AS phone,
+     	REGDATE AS regdate
+     	
+     	FROM MEMBER
      </select>
- 
-     <select id="getUser" resultType="com.hnb.member.MemberVO">
-             SELECT * FROM user
-     </select>
+	<select id="selectOneBy" resultType="com.hnb.member.MemberVO" parameterType="string">
+		SELECT
+			ID AS id,
+	     	PASSWORD AS password,
+	     	NAME AS name,
+	     	BIRTH AS birth,
+	     	ADDR AS addr,
+	     	GENDER AS gender,
+	     	EMAIL AS email,
+	     	PHONE AS phone,
+	     	REGDATE AS regdate
+		FROM MEMBER WHERE ID = #{id}
+	</select>
+	<select id="count" resultType="int">
+	</select>
+	<insert id="insert" parameterType="com.hnb.movie.MovieVO">
+	    INSERT INTO MOVIE
+	      (FILM_NUMBER,FILM_NAME,DIRECTOR,ACTOR,RATE,RUNTIME,PRICE,GENRE,RELEASE_DATE,END_DATE,STORY,CUT,TRAILER,COUNTRY)
+	    VALUES
+	      (#{filmNumber}, #{filmName}, #{director}, #{actor}, #{rate},  #{runtime}, #{price}, #{genre}, #{releaseDate}, #{endDate}, #{story}, #{cut}, #{trailer}, #{country})
+	</insert>
+	<update id="update" parameterType="com.hnb.movie.MovieVO">
+	    UPDATE MOVIE SET
+	     	FILM_NAME = #{filmName},
+	     	DIRECTOR = #{director},
+	     	ACTOR = #{actor},
+	     	RATE = #{rate},
+	     	RUNTIME = #{runtime},
+	     	PRICE = #{price},
+	     	GENRE = #{genre},
+	     	RELEASE_DATE = #{releaseDate},
+	     	END_DATE = #{endDate},
+	     	STORY = #{story},
+	     	CUT = #{cut},
+	     	TRAILER = #{trailer},
+	     	COUNTRY = #{country}
+	    WHERE FILM_NUMBER = #{filmNumber}
+	</update>
+	<delete id="delete" parameterType="string">
+		DELETE FROM MOVIE WHERE FILM_NUMBER = #{filmNumber}
+	</delete>
  </mapper>

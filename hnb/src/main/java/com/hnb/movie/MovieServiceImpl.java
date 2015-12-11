@@ -12,35 +12,37 @@ import com.hnb.mapper.MovieMapper;
 @Service
 public class MovieServiceImpl implements MovieService {
 	private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
-	@Autowired MovieDAOImpl dao;
-	@Autowired private SqlSession sqlSession;
+	@Autowired private SqlSession sqlSession;		// 실제 위치는 root-context
 	
 	@Override	//영화등록
 	public int register(MovieVO o) {
-		return dao.insert(o);
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.insert(o);
 	}
 	@Override	//영화수정
 	public int change(MovieVO o) {
-		return dao.update(o);
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.update(o);
 	}
 	@Override	//영화삭제
 	public int remove(String filmNumber) {
-		return dao.delete(filmNumber);
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.delete(filmNumber);
 	}
 	@Override	//영화제목으로 검색
 	public MovieVO searchByName(String filmName) {
-		return dao.selectNameBy(filmName);
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.selectNameBy(filmName);
 	}
 	@Override	//영화전체목록
 	public List<MovieVO> getList() {
 		logger.info("MovieServiceImpl : getList()");
 		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
-		System.out.println("getList() 마이바티스 리턴값1 : {}"+mapper.selectAll());
-		logger.info("getList() 마이바티스 리턴값 : {}", mapper.selectAll());
 		return mapper.selectAll();
 	}
 	@Override
 	public List<MovieVO> getFilmNum() {
-		return dao.selectChart();
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.selectChart();
 	}
 }

@@ -76,12 +76,13 @@ public class MovieController {
 		return movie;
 	}
 	@RequestMapping("/movie_Chart")
-	public Model movieChart(Model model){
+	public @ResponseBody List<MovieVO> movieChart(){
 		logger.info("MovieController-movieChart() 진입");
 		List<MovieVO> list =service.getList();
 		logger.info("서비스 리턴값 : {}", list);
-		model.addAttribute("movieList2", list);
-		return model;
+		//model.addAttribute("movieList2", list);
+		//return model;
+		return list;
 	}
 	
 }
