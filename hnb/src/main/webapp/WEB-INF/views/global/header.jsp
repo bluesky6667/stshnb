@@ -129,7 +129,7 @@
 		
 		$("#event_btn").click(function() {
 			history.pushState("Event_home","","");
-			$("#box").load();
+			location.href="${context}/event/boardList";
 		});
 		
 		/* 로그인 버튼 */

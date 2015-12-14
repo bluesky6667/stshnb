@@ -3,6 +3,6 @@ package com.hnb.mapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArticleMapper {
+public interface EventMapper {
 
 }

@@ -1,0 +1,64 @@
+#boardList {
+	height: 500px;
+}
+
+#boardList a:link {
+  color: #ffffff;text-decoration:none;
+}
+
+#boardList a:visited {
+  color: #ffff80;text-decoration:none;
+}
+
+#boardList a:hover {
+  color: #ffffff;text-decoration:none;
+  font-size:16pt; font-family:"굴림";
+}
+
+#boardList form {
+  margin-bottom:0; margin-top:0; padding:0;
+}
+
+#tab_boardList, #tab_title{
+	font-size:12pt;
+	WIDTH:70%;
+	height:50px;
+	BORDER:1px solid white;
+	CELLSPACING:0;
+	CELLPADDING:1px;
+	ALIGN:CENTER;
+	margin: auto;
+}
+
+#tab_boardList tr td {
+	BORDER:1px solid white;
+}
+#pagenation{
+	font-size:12pt;
+	WIDTH:70%;
+	height:50px;
+	CELLSPACING:0;
+	CELLPADDING:1px;
+	ALIGN:CENTER;
+	margin: auto;
+}
+#tab_count{
+	font-size:12pt;
+	WIDTH:70%;
+	height:30px;
+	CELLSPACING:0;
+	CELLPADDING:1px;
+	margin: auto;
+}
+#tab_count tr td{
+	padding-right: 15px;
+	text-align: right;
+}
+
+#boardList input,textarea,form {
+  font-size:12pt; font-family:"굴림"; line-height:12pt;
+}
+
+#boardList td,select {
+  color : #ffffff; font-family:"굴림"; font-size:12pt; line-height: 17pt;
+}
