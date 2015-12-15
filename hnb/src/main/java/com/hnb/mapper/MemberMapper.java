@@ -16,9 +16,10 @@ public interface MemberMapper {
 		
 		// R : 조회
 		public List<MemberVO> selectAll(Command command);
-		public List<MemberVO> selectSomeBy(String column,String keyword); //임의의 값으로 검색
+		public List<MemberVO> selectSomeBy(Command command); //임의의 값으로 검색
 		public MemberVO selectOneBy(String id); //아이디로 조회
 		public int count(); //전체회원수 조회
+		public int count2(Command command); //전체회원수 조회
 		public MemberVO login(String id, String pass); //로그인
 		
 		// U : 업데이트

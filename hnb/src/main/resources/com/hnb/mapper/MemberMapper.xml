@@ -28,7 +28,8 @@
 	     	EMAIL AS email,
 	     	PHONE AS phone,
 	     	REGDATE AS regdate
-		FROM MEMBER WHERE #{column} = #{keyword}
+		FROM (SELECT ROWNUM AS seq, m.* FROM MEMBER m WHERE ${column} LIKE '%' || #{keyword} || '%')
+		WHERE seq BETWEEN #{start} AND #{end}
 	</select>
 	<select id="selectOneBy" resultType="com.hnb.member.MemberVO" parameterType="string">
 		SELECT
@@ -45,6 +46,9 @@
 	</select>
 	<select id="count" resultType="int">
 		SELECT COUNT(*) AS COUNT FROM MEMBER
+	</select>
+	<select id="count2" resultType="int" parameterType="com.hnb.global.Command">
+		SELECT COUNT(*) AS COUNT FROM MEMBER WHERE ${column} LIKE '%' || #{keyword} || '%'
 	</select>
 	<insert id="insert" parameterType="com.hnb.member.MemberVO">
 	    INSERT INTO MEMBER
