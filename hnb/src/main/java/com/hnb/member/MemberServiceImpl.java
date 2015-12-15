@@ -33,10 +33,10 @@ public class MemberServiceImpl  implements MemberService{
 	
 	// 임의의 검색어로 조회
 	@Override
-	public List<MemberVO> searchByKeyword(String column, String keyword) {
+	public List<MemberVO> searchByKeyword(Command command) {
 		logger.info("MemberServiceImpl : searchByKeyword()");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		return mapper.selectSomeBy(column, keyword);
+		return mapper.selectSomeBy(command);
 	}
 	
 	// ID로 회원검색
@@ -86,5 +86,12 @@ public class MemberServiceImpl  implements MemberService{
 		logger.info("MemberServiceImpl : remove()");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.delete(id);
+	}
+
+	@Override
+	public int count2(Command command) {
+		logger.info("MemberServiceImpl : count2()");
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.count2(command);
 	}
 }

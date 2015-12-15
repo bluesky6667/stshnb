@@ -3,7 +3,8 @@ var Member = {
 			$("#box").load(project + "/member/Member.do");
 		},
 		login : function(project) {
-			$.ajax(project + "/member/Member.do?page=login",{
+			alert("로그인버튼");
+			$.ajax(project + "/member/login",{
 				data : {
 					id : $(".form-2 input:text[name=login]").val(),
 					pw : $(".form-2 input:password[name=password]").val()
@@ -11,8 +12,10 @@ var Member = {
 				dataType : "json",
 				success : function(data) {
 					//로그인 결과가 성공이면
-					if(data.result === "success"){
-						$("#frm_toggle").load(project + "/global/Main.do?page=header #frm_logined");
+					if(data !== null){
+						alert("로그인성공!");
+						//$("#frm_toggle").load(project + "/global/Main.do?page=header #frm_logined");
+						location.href = project+"/member/mypage";
 						// 관리자 아이디로 확인되면
 						if(data.admin === "yes") {
 							$("#outbox").append(
@@ -46,7 +49,8 @@ var Member = {
 			});
 		},
 		logout : function(project) {
-			$.ajax(project + "/member/Member.do?page=logout",{
+			location.href = project+"/member/logout";
+			/*$.ajax(project + "/member/logout",{
 				dataType : "json",
 				success : function(data) {
 					$("#frm_toggle").empty().load(project + "/global/Main.do?page=header #frm_login");
@@ -55,7 +59,7 @@ var Member = {
 				},
 				error : function() {
 				}
-			});
+			});*/
 		},
 		
 		/* 회원가입 html */

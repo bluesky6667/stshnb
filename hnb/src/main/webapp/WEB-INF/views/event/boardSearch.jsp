@@ -61,12 +61,12 @@
 		</TD>
 		<TD WIDTH=320 ALIGN=CENTER>
 			<c:if test="${startPage ne 1}">
-				<a href="${context}/event/boardList/1">
+				<a href="${context}/event/memberSearch/1">
 					<IMG SRC="${img}/btn_bf_block.gif">&nbsp;
 				</a>
 			</c:if>
 			<c:if test="${startPage-GROUPSIZE gt 0}">
-				<a href="${context}/event/boardList/${startPage-GROUPSIZE}">
+				<a href="${context}/event/memberSearch/${startPage-GROUPSIZE}">
 					<IMG SRC="${img}/btn_bf_page.gif">&nbsp;
 				</a>
 			</c:if>
@@ -76,14 +76,14 @@
 						<font style="color: yellow;font-size: 18px">${status.index}</font>
 					</c:when>
 					<c:otherwise>
-					<a href="${context}/event/boardList/${status.index}">
+					<a href="${context}/event/memberSearch/${status.index}">
 							<font>${status.index}</font>
 						</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${startPage+GROUPSIZE le totPage}">
-				<a href="${context}/event/boardList/${startPage+GROUPSIZE}">
+				<a href="${context}/event/memberSearch/${startPage+GROUPSIZE}">
 					<IMG SRC="${img}/btn_nxt_page.gif">&nbsp; 
 				</a>
 			</c:if>
