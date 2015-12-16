@@ -13,7 +13,8 @@
 	     	GENDER AS gender,
 	     	EMAIL AS email,
 	     	PHONE AS phone,
-	     	REGDATE AS regdate
+	     	REGDATE AS regdate,
+	     	PROFILE AS profile
      	FROM (SELECT ROWNUM AS seq, m.* FROM MEMBER m)
      	WHERE seq BETWEEN #{start} AND #{end}
      </select>
@@ -27,7 +28,8 @@
 	     	GENDER AS gender,
 	     	EMAIL AS email,
 	     	PHONE AS phone,
-	     	REGDATE AS regdate
+	     	REGDATE AS regdate,
+	     	PROFILE AS profile
 		FROM (SELECT ROWNUM AS seq, m.* FROM MEMBER m WHERE ${column} LIKE '%' || #{keyword} || '%')
 		WHERE seq BETWEEN #{start} AND #{end}
 	</select>
@@ -41,7 +43,8 @@
 	     	GENDER AS gender,
 	     	EMAIL AS email,
 	     	PHONE AS phone,
-	     	REGDATE AS regdate
+	     	REGDATE AS regdate,
+	     	PROFILE AS profile
 		FROM MEMBER WHERE ID = #{id}
 	</select>
 	<select id="count" resultType="int">
@@ -61,7 +64,8 @@
 	     	PASSWORD = #{password},
 	     	ADDR = #{addr},
 	     	PHONE = #{phone},
-	     	EMAIL = #{email}
+	     	EMAIL = #{email},
+	     	PROFILE = #{profile}
 	    WHERE ID = #{id}
 	</update>
 	<delete id="delete" parameterType="string">
