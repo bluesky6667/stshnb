@@ -18,58 +18,72 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Override
 	public int write(ArticleVO article) {
-		logger.info("MemberServiceImpl : write()");
+		logger.info("ArticleServiceImpl : write()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.write(article);
 	}
 
 	@Override
 	public List<ArticleVO> getList(Command command) {
-		logger.info("MemberServiceImpl : getList()");
+		logger.info("ArticleServiceImpl : getList()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.getList(command);
 	}
 
 	@Override
 	public List<ArticleVO> searchByKeyword(Command command) {
-		logger.info("MemberServiceImpl : searchByKeyword()");
+		logger.info("ArticleServiceImpl : searchByKeyword()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.searchByKeyword(command);
 	}
 
 	@Override
 	public ArticleVO searchById(int rcdNo) {
-		logger.info("MemberServiceImpl : searchById()");
+		logger.info("ArticleServiceImpl : searchById()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.searchById(rcdNo);
 	}
 
 	@Override
 	public int count() {
-		logger.info("MemberServiceImpl : count()");
+		logger.info("ArticleServiceImpl : count()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.count();
 	}
 
 	@Override
 	public int countByKeyword(Command command) {
-		logger.info("MemberServiceImpl : countByKeyword()");
+		logger.info("ArticleServiceImpl : countByKeyword()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.countByKeyword(command);
 	}
 
 	@Override
-	public int change(ArticleVO article) {
-		logger.info("MemberServiceImpl : change()");
+	public int changeRcdNo(ArticleVO article) {
+		logger.info("ArticleServiceImpl : changeRcdNo()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
-		return mapper.change(article);
+		return mapper.changeRcdNo(article);
 	}
 
 	@Override
 	public int remove(int rcdNo) {
-		logger.info("MemberServiceImpl : remove()");
+		logger.info("ArticleServiceImpl : remove()");
 		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
 		return mapper.remove(rcdNo);
+	}
+
+	@Override
+	public String getArticlePass(int rcdNo) {
+		logger.info("ArticleServiceImpl : getArticlePass()");
+		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
+		return mapper.getArticlePass(rcdNo);
+	}
+
+	@Override
+	public int changeContent(ArticleVO article) {
+		logger.info("ArticleServiceImpl : changeContent()");
+		ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
+		return mapper.changeContent(article);
 	}
 
 }

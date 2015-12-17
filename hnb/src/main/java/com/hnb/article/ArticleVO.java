@@ -7,19 +7,39 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleVO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int rcdNo;			// 글 번호
-	int grpNo;			// 글 그룹 번호
-	String usrName;		// 작성자 이름
-	String usrMail;		// 작성자 이메일
-	String usrSubject;	// 글 제목
-	String usrContent;	// 글 내용
-	String usrPass;		// 글 비번
-	String usrFileName;	// 업로드 되는 파일 이름
-	int usrFileSize;	// 업로드 되는 파일 크기
-	String usrDate;		// 작성일
-	int usrRefer;		// 글 참조 횟수
-	int usrLevel;		// 글 레벨
-	int usrOrder;		// 글 그룹에서 글의 출력순서
+	private int rcdNo;			// 글 번호
+	private int grpNo;			// 글 그룹 번호
+	private String usrName;		// 작성자 이름
+	private String usrMail;		// 작성자 이메일
+	private String usrSubject;	// 글 제목
+	private String usrContent;	// 글 내용
+	private String usrPass;		// 글 비번
+	private String usrFileName;	// 업로드 되는 파일 이름
+	private int usrFileSize;	// 업로드 되는 파일 크기
+	private String usrDate;		// 작성일
+	private int usrRefer;		// 글 참조 횟수
+	private int usrLevel;		// 글 레벨
+	private int usrOrder;		// 글 그룹에서 글의 출력순서
+	
+	public ArticleVO() {}
+	
+	public ArticleVO(int rcdNo,int grpNo,String usrName,String usrMail,String usrSubject,String usrContent,String usrPass,
+			String usrFileName,int usrFileSize,String usrDate,int usrRefer,int usrLevel,int usrOrder) {
+		this.rcdNo = rcdNo;
+		this.grpNo = grpNo;
+		this.usrName = usrName;
+		this.usrMail = usrMail;
+		this.usrSubject = usrSubject;
+		this.usrContent = usrContent;
+		this.usrPass = usrPass;
+		this.usrFileName = usrFileName;
+		this.usrFileSize = usrFileSize;
+		this.usrDate = usrDate;
+		this.usrRefer = usrRefer;
+		this.usrLevel = usrLevel;
+		this.usrOrder = usrOrder;
+	}
+	
 	public int getRcdNo() {
 		return rcdNo;
 	}

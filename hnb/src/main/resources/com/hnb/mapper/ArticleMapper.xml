@@ -3,11 +3,50 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
  <mapper namespace="com.hnb.mapper.ArticleMapper">
-     <select id="getOne" resultType="com.hnb.article.ArticleVO">
-             SELECT * FROM user WHERE name = #{name}  
+     <select id="count" resultType="int">
+		SELECT COUNT(RCD_NO) AS COUNT FROM BOARD
+	</select>
+	<select id="getList" resultType="com.hnb.article.ArticleVO">
+     	SELECT
+	     	RCD_NO AS rcdNo,
+	     	USR_SUBJECT AS usrSubject,
+	     	USR_NAME AS usrName,
+	     	USR_DATE AS usrDate,
+	     	USR_REFER AS usrRefer
+     	FROM BOARD ORDER BY RCD_NO DESC
      </select>
- 
-     <select id="getUser" resultType="com.hnb.article.ArticleVO">
-             SELECT * FROM user
+     <select id="countByKeyword" resultType="int" parameterType="com.hnb.global.Command">
+     	SELECT COUNT(RCD_NO) AS COUNT FROM BOARD WHERE ${column} LIKE '%' || #{keyword} || '%'
      </select>
+     <select id="searchByKeyword" resultType="com.hnb.article.ArticleVO" parameterType="com.hnb.global.Command">
+		SELECT
+			RCD_NO AS rcdNo,
+	     	USR_SUBJECT AS usrSubject,
+	     	USR_NAME AS usrName,
+	     	USR_DATE AS usrDate,
+	     	USR_REFER AS usrRefer
+		FROM BOARD
+		WHERE ${column} LIKE '%' || #{keyword} || '%' ORDER BY RCD_NO DESC
+	</select>
+	<update id="changeRcdNo" parameterType="com.hnb.article.ArticleVO">
+	    UPDATE BOARD SET
+	     	USR_REFER = #{usrRefer}+1
+	    WHERE RCD_NO = #{rcdNo}
+	</update>
+	<delete id="remove" parameterType="string">
+		DELETE FROM BOARD WHERE RCD_NO = #{rcdNo}
+	</delete>
+	<select id="getArticlePass" resultType="string" parameterType="int">
+		SELECT
+	     	USR_PASS AS usrPass
+		FROM BOARD
+		WHERE RCD_NO = #{rcdNo}
+	</select>
+	<update id="changeContent" parameterType="com.hnb.article.ArticleVO">
+	    UPDATE BOARD SET
+	     	USR_MAIL = #{usrMail},
+	     	USR_SUBJECT = #{usrSubject},
+	     	USR_CONTENT = #{usrContent}
+	    WHERE RCD_NO = #{rcdNo}
+	</update>
  </mapper>

@@ -46,7 +46,7 @@ public class EventController {
 	}
 	@RequestMapping("/boardList")
 	public String goList(){
-		logger.info("EventController-boardList() 진입");
+		logger.info("EventController-boardList(default) 진입");
 		return "event/boardList.tiles";
 	}
 	@RequestMapping("/memberSearch/{pageNo}")

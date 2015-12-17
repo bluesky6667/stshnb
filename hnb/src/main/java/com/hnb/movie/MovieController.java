@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/movie")
 public class MovieController {
 	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
-	@Autowired
-	MovieServiceImpl service;
-	@Autowired
-	MovieVO movie;
+	@Autowired MovieServiceImpl service;
+	@Autowired MovieVO movie;
 
 	
 	@RequestMapping("/Movie")

@@ -1,4 +1,4 @@
-package com.hnb.article;
+package com.hnb.theme;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,10 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/article")
-public class ArticleController {
-	private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
-	@Autowired ArticleVO article;
-	@Autowired ArticleServiceImpl service;
-	
+@RequestMapping("/theme")
+public class ThemeController {
+	private static final Logger logger = LoggerFactory.getLogger(ThemeController.class);
+	@Autowired ThemeVO theme;
+	@Autowired ThemeServiceImpl themeService;
 }

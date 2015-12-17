@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hnb.mapper.ThemeMapper">
+     <select id="count" resultType="int">
+		SELECT COUNT(THEME_NO) AS COUNT FROM THEME
+	</select>
+	<select id="getList" resultType="com.hnb.theme.ThemeVO">
+     	SELECT
+	     	THEME_NO AS themeNo,
+	     	THEME_NAME AS themeName
+     	FROM THEME ORDER BY THEME_NO DESC
+     </select>
+     <select id="countByKeyword" resultType="int" parameterType="com.hnb.global.Command">
+     	SELECT COUNT(THEME_NO) AS COUNT FROM THEME WHERE ${column} LIKE '%' || #{keyword} || '%'
+     </select>
+     <select id="searchByKeyword" resultType="com.hnb.theme.ThemeVO" parameterType="com.hnb.global.Command">
+		SELECT
+			THEME_NO AS themeNo,
+	     	THEME_NAME AS themeName
+		FROM THEME
+		WHERE ${column} LIKE '%' || #{keyword} || '%' ORDER BY THEME_NO DESC
+	</select>
+	<update id="change" parameterType="com.hnb.article.ArticleVO">
+	    UPDATE THEME SET
+	     	THEME_NAME = #{themeName}
+	    WHERE THEME_NO = #{themeNo}
+	</update>
+	<delete id="remove" parameterType="string">
+		DELETE FROM THEME WHERE THEME_NO = #{themeNo}
+	</delete>
+ </mapper>

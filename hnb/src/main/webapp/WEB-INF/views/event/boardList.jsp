@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<LINK REL="stylesheet" type="text/css" href="${css}/board.css"/>
 
 <div id = "boardList">
 <TABLE id="tab_title">

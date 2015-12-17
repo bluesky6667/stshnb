@@ -16,11 +16,13 @@ public interface ArticleMapper {
 	public List<ArticleVO> getList(Command command); //전체회원목록
 	public List<ArticleVO> searchByKeyword(Command command); //임의의 값으로 검색
 	public ArticleVO searchById(int rcdNo); //아이디로 조회
+	public String getArticlePass(int rcdNo); // 글 비번 조회
 	public int count(); //전체회원수 조회
 	public int countByKeyword(Command command); //전체회원수 조회
 	
 	// U : 개인정보 변경
-	public int change(ArticleVO article);
+	public int changeRcdNo(ArticleVO article);
+	public int changeContent(ArticleVO article);
 	
 	// D : 삭제 (회원탈퇴)
 	public int remove(int rcdNo);
