@@ -12,10 +12,10 @@
 	   	<!-- 로그인 안한 상태 -->
 		<div id="frm_login" class="form-2">
 			<p class="float">
-				<label for="login"><i class="icon-user">ID</i></label> <input type="text" name="login" placeholder="UserID">
+				<label for="login"><i class="icon-user">ID</i></label> <input type="text" id="id" name="id" placeholder="UserID">
 			</p>
 			<p class="float">
-				<label for="password"><i class="icon-user">PW</i></label> <input type="password" name="password" placeholder="Password" class="showpassword">
+				<label for="password"><i class="icon-user">PW</i></label> <input type="password" id="password" name="password" placeholder="Password" class="showpassword">
 			</p>
 			<p class="clearfix">
 				<a id="join_btn" class="log-twitter">회원 가입</a> 
@@ -64,7 +64,10 @@
                         <button id="theater_btn">극장</button>
                     </li>
                     <li>
-                        <button id="event_btn">이벤트&컬쳐</button>
+                        <button id="board_btn">게시판</button>
+                    </li>
+                    <li>
+                        <button id="admin_btn">관리자</button>
                     </li>
                 </ul>
             </div>
@@ -74,9 +77,10 @@
 <script type="text/javascript">
 	$(function() {
 		var $home = $('#home');
-		var $event = $('#event_btn');
+		var $board = $('#board_btn');
 		var $movie = $('#movie_btn');
 		var $ticket = $('#ticket_btn');
+		var $admin = $('#admin_btn');
 		var $mainView = $('.mainView');
 		var $login = $('#login_btn');
 		var $logout = $('#logout_btn');
@@ -89,7 +93,9 @@
 		global.load($home,$mainView,context+"/");
 		global.load($ticket,$mainView,context+"/ticket/Ticket.do");
 		global.load($mypage,$mainView,context+"/member/mypage");
-		global.move($event,context+"/event/boardList");
+		global.move($board,context+"/event/boardList");
+		//global.move($admin,context+"/admin/memberList");
+		global.move($admin,context+"/admin/main");
 		
 		$movie.click(function() {Movie.home(context);});
 		$join.click(function() {Member.join(context);});

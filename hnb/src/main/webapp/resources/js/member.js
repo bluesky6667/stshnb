@@ -3,21 +3,23 @@ var Member = {
 			$("#box").load(project + "/member/Member.do");
 		},
 		login : function(project) {
-			alert("로그인버튼");
+			var member = {
+					"id":$('#id').val(),				//"id"는 VO의 property와 일치
+					"password":$('#password').val()
+			};
 			$.ajax(project + "/member/login",{
-				data : {
-					id : $(".form-2 input:text[name=login]").val(),
-					pw : $(".form-2 input:password[name=password]").val()
-				},
+				data : JSON.stringify(member),
 				dataType : "json",
+				type : 'post',							// 생략가능
+				contentType : "application/json;",		// 생략가능
+				mimeType : "application/json;",			// 생략가능
 				success : function(data) {
 					//로그인 결과가 성공이면
 					if(data !== null){
-						alert("로그인성공!");
 						//$("#frm_toggle").load(project + "/global/Main.do?page=header #frm_logined");
 						location.href = project+"/member/mypage";
 						// 관리자 아이디로 확인되면
-						if(data.admin === "yes") {
+						if(member.admin === "yes") {
 							$("#outbox").append(
 								'<table id="admin_nav"><tr><td><button id="admin_home">홈</button></td></tr>'+
 								'<tr><td><button id="admin_member">회원관리</button></td></tr>'+

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,20 +89,18 @@ public class MemberController {
 		status.setComplete();
 		return "redirect:/";		//바로 디테일로
 	}
-	@RequestMapping("/login")
-	public @ResponseBody MemberVO login(
-			String id,
-			@RequestParam("pw") String password,
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public @ResponseBody MemberVO login(@RequestBody MemberVO param,
 			Model model
 			){
 		logger.info("MemberController-login() 진입");
-		member = service.login(id, password);
+		member = service.login(param.getId(), param.getPassword());
 		model.addAttribute("user", member);
-		if(member.getId().equals(id)){
+		if(member.getId().equals(param.getId())){
 			logger.info("로그인성공");
         } else {
         	logger.info("로그인실패");
-            if (id.equals("choa")) {
+            if (member.getId().equals("choa")) {
             	model.addAttribute("admin","yes");
 			} else {
 				model.addAttribute("admin","no");
