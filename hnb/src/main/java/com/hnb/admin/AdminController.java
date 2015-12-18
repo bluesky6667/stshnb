@@ -58,10 +58,19 @@ public class AdminController {
 			Model model){
 		logger.info("AdminController-memberList() 진입");
 		logger.info("넘어온 페이지 번호 : {}",pageNo);
+		int count = memberService.count(),pageNum = Integer.parseInt(pageNo),pageSize = 5,groupSize = 3;
+		int totPage = (count%pageSize==0) ? count/pageSize : count/pageSize+1;
+		int startPage = pageNum -((pageNum-1)%groupSize);
+		int lastPage = (startPage+groupSize-1 <= totPage) ? startPage+groupSize-1 : totPage;
 		Map<String,Object> map = new HashMap<String,Object>();
+		logger.info("count : {}", count);
 		map.put("list", memberService.getList(CommandFactory.list(pageNo)));
-		map.put("count", memberService.count());
+		map.put("count", count);
 		map.put("pageNo", pageNo);
+		map.put("startPage", startPage);
+		map.put("groupSize", groupSize);
+		map.put("lastPage", lastPage);
+		map.put("totPage", totPage);
 		return map;
 	}
 	@RequestMapping("/main")
