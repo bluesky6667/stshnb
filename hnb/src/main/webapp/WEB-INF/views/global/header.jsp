@@ -93,7 +93,7 @@
 		global.load($home,$mainView,context+"/");
 		global.load($ticket,$mainView,context+"/ticket/Ticket.do");
 		global.load($mypage,$mainView,context+"/member/mypage");
-		global.move($board,context+"/event/boardList");
+		global.move($board,context+"/article/list");
 		//global.move($admin,context+"/admin/memberList");
 		global.move($admin,context+"/admin/main");
 		
